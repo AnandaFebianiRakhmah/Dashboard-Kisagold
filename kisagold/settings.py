@@ -10,7 +10,7 @@ SECRET_KEY = 'your-secret-key'  # Ganti dengan secret key asli
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # Untuk Koyeb, bisa ganti dengan domain Koyeb kamu nanti
 
 # Application definition
 INSTALLED_APPS = [
@@ -20,8 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'kisagold',           # Tambahkan nama app kamu di sini
-    'dashboard',          # Kalau kamu punya app dashboard juga
+    'kisagold',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
@@ -34,12 +34,12 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'myworld.urls'  # Ganti dengan nama folder proyek kamu
+ROOT_URLCONF = 'myworld.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # Opsional
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -52,7 +52,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myworld.wsgi.application'  # Ganti jika nama proyek kamu berbeda
+WSGI_APPLICATION = 'myworld.wsgi.application'
 
 # Database
 DATABASES = {
@@ -88,7 +88,12 @@ USE_I18N = True
 USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+# Folder output untuk collectstatic
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# (Opsional) folder sumber static jika kamu pakai folder `static/`
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
 # Default primary key field type
